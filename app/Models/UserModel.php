@@ -34,10 +34,10 @@ class UserModel extends Model
 		$this->where('username', $username);
 		$this->update($this->get()->getFirstRow()->id, $dataUpdate);
 
-		$n = $this->where(['username' => $username, 'password' => $pass])->countAllResults();
+		$n = $this->where(['username' => $username])->countAllResults();
 		
 		if($n > 0) {
-			$query = $this->getWhere(['username' => $username,'password' => $pass])->getRow();
+			$query = $this->getWhere(['username' => $username])->getRow();
 			$data = array(
 				'isi' => array(
 					'message'    => 'Login berhasil',

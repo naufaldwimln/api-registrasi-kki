@@ -11,7 +11,7 @@ use Config\Services;
  
 final class PostRequestOnly implements FilterInterface
 {
-    public function before(RequestInterface $request)
+    public function before(RequestInterface $request, $arguments = null)
     {
         if ($request->getMethod() === 'post') {
             return;
@@ -21,7 +21,7 @@ final class PostRequestOnly implements FilterInterface
             ->setStatusCode(ResponseInterface::HTTP_METHOD_NOT_ALLOWED);
     }
  
-    public function after(RequestInterface $request, ResponseInterface $response)
+    public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
     }
 }
